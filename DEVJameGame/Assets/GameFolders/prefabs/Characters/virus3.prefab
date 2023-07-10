@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1593891002583811079}
   - component: {fileID: 6392272172421936745}
   - component: {fileID: 3613167209069419250}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: virus3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5925992993694218159}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 50
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}

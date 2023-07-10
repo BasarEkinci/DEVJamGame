@@ -2,15 +2,18 @@ using System;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
-public class PlayerConttoller : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
     [SerializeField] ParticleSystem runEffect;
+
     private CharacterController controller;
+    
     private Vector3 playerVelocity;
+    private Vector3 move;
     private bool groundedPlayer;
     private float gravityValue = -12f;
-    private Vector3 move;
+    
     private bool jumpInput;
 
     private void Awake()
