@@ -12,12 +12,16 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject mainCamera;
     [SerializeField] GameObject startPanel;
     [SerializeField] RectTransform startText;
+    [SerializeField] GameObject gamePanel;
     [SerializeField] Vector3 playPos;
 
     private void Start()
     {
         if(!startPanel.activeSelf)
             startPanel.SetActive(true);
+        
+        if(gamePanel.activeSelf)
+            gamePanel.SetActive(false);
     }
 
     public void PlayButton()
@@ -33,6 +37,7 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(1f);
         mainCamera.transform.DOMove(playPos, 1f);
         mainCamera.transform.DORotate(Vector3.right*65f, 1f);
+        gamePanel.SetActive(true);
         GameManager.Instance.IsGameStarted = true;
     }
 }

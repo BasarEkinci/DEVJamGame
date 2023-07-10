@@ -1,16 +1,19 @@
+using TMPro;
 using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
     [SerializeField] GameObject bomb;
     [SerializeField] Transform bombSpawnPos;
-
+    [SerializeField] TMP_Text grenadeText;
     public int bombNumber = 5;
 
     private float throwForce = 600f;
     private void Update()
     {
         if (!GameManager.Instance.IsGameStarted) return;
+
+        grenadeText.text = bombNumber.ToString();
         
         if (Input.GetKeyDown(KeyCode.Q) && bombNumber > 0 )
         {
