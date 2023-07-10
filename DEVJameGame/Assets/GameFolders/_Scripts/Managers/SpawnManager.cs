@@ -9,18 +9,21 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] PlayerCombat player;
     private Vector3 spawnPos;
     private IEnumerator coroutine;
-    
+    private bool isSpawnBombEnable;
     
     private void Start()
     {
         coroutine = SpawnVirus(4f);
         StartCoroutine(coroutine);
-        StartCoroutine("SpawnCollectableBomb");
+        InvokeRepeating("SpawnCollectableBomb",1f,5f);
     }
 
     private void Update()
     {
+        if (!GameManager.Instance.IsGameStarted) return;
+        
         SetBounds();
+        isSpawnBombEnable = player.bombNumber < 5;
     }
 
     private void SetBounds()
@@ -40,17 +43,13 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    private IEnumerator SpawnCollectableBomb()
+    private void SpawnCollectableBomb()
     {
-        while (true)
+        float chance = Random.Range(0f, 8f);
+        if(isSpawnBombEnable && chance <= 4f)
         {
-            if(player.bombNumber < 5)
-            {
-                float spawnrate = Random.Range(3f, 10f);
-                yield return new WaitForSeconds(spawnrate);
-                Vector3 spawnPos = new Vector3(Random.Range(-12f, 12f), 16.37f, Random.Range(-8f, 8f));
-                Instantiate(collectableBomb, spawnPos, transform.rotation);
-            }
+            Vector3 spawnPos = new Vector3(Random.Range(-12f, 12f), 16.37f, Random.Range(-8f, 8f)); 
+            Instantiate(collectableBomb, spawnPos, transform.rotation);
         }
     }
 }

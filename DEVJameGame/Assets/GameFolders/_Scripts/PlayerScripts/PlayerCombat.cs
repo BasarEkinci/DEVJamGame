@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
@@ -11,7 +10,9 @@ public class PlayerCombat : MonoBehaviour
     private float throwForce = 600f;
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && bombNumber >= 0)
+        if (!GameManager.Instance.IsGameStarted) return;
+        
+        if (Input.GetKeyDown(KeyCode.Q) && bombNumber > 0 )
         {
             GameObject grenade = Instantiate(bomb, bombSpawnPos.position, transform.rotation);
             bombNumber--;
@@ -25,6 +26,7 @@ public class PlayerCombat : MonoBehaviour
         if (other.gameObject.CompareTag("CollectableBomb") && bombNumber < 5)
         {
             bombNumber++;
+            Destroy(other.gameObject);
         }
     }
 }

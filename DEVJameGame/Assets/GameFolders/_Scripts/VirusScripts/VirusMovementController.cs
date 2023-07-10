@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -38,7 +37,7 @@ public class VirusMovementController : MonoBehaviour
             timer += Time.deltaTime;
             if (timer >= wanderTimer)
             {
-                Vector3 newPos = RandomNavSphere(transform.position, wanderRadius,-1);
+                Vector3 newPos = RandomNavSphere(transform.position, wanderRadius,-1); 
                 agent.SetDestination(newPos);
                 timer = 0;
             }

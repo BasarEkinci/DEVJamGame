@@ -23,6 +23,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        
+        if(!GameManager.Instance.IsGameStarted) return;
+        
         if (groundedPlayer && playerVelocity.y <= 0f)
         {
             playerVelocity.y = 0f;
