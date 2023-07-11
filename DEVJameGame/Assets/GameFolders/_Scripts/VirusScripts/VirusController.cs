@@ -1,5 +1,5 @@
+using System.Collections;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class VirusController : MonoBehaviour
 {
@@ -11,7 +11,16 @@ public class VirusController : MonoBehaviour
         if(health <= 0f)
         {
             Instantiate(explosionEffect, transform.position, transform.rotation);
+            HealthManager.Instance.IncreaseHealth(10f);
             Destroy(gameObject);
+        }
+    }
+
+    private void OnCollisionStay(Collision other)
+    {
+        if (other.gameObject.CompareTag("GameArea"))
+        {
+            HealthManager.Instance.TakeDamage(0.04f);
         }
     }
 
@@ -19,4 +28,6 @@ public class VirusController : MonoBehaviour
     {
         health -= damage;
     }
+
+
 }

@@ -1,9 +1,9 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
-using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class UIManager : MonoBehaviour
 {
@@ -14,7 +14,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] RectTransform startText;
     [SerializeField] GameObject gamePanel;
     [SerializeField] Vector3 playPos;
-
+    [SerializeField] VolumeProfile globalVOlume;
+    
     private void Start()
     {
         if(!startPanel.activeSelf)
@@ -22,6 +23,10 @@ public class UIManager : MonoBehaviour
         
         if(gamePanel.activeSelf)
             gamePanel.SetActive(false);
+        
+        globalVOlume.TryGet(out DepthOfField depthOfField);
+        if (!depthOfField.mode.overrideState)
+            depthOfField.mode.overrideState = true;
     }
 
     public void PlayButton()
@@ -35,6 +40,8 @@ public class UIManager : MonoBehaviour
     IEnumerator StartGameActions()
     {
         yield return new WaitForSecondsRealtime(1f);
+        globalVOlume.TryGet(out DepthOfField depthOfField);
+        depthOfField.mode.overrideState = false;
         mainCamera.transform.DOMove(playPos, 1f);
         mainCamera.transform.DORotate(Vector3.right*65f, 1f);
         gamePanel.SetActive(true);

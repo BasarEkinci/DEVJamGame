@@ -6,6 +6,8 @@ TagManager:
   tags:
   - virus
   - people
+  - CollectableBomb
+  - GameArea
   layers:
   - Default
   - TransparentFX

@@ -11,8 +11,9 @@ public class SpawnManager : MonoBehaviour
     private IEnumerator coroutine;
     private bool isSpawnBombEnable;
     
-    private void Start()
+    private IEnumerator Start()
     {
+        yield return new WaitForSecondsRealtime(1.5f);
         coroutine = SpawnVirus(4f);
         StartCoroutine(coroutine);
         InvokeRepeating("SpawnCollectableBomb",1f,5f);
@@ -20,8 +21,6 @@ public class SpawnManager : MonoBehaviour
 
     private void Update()
     {
-        if (!GameManager.Instance.IsGameStarted) return;
-        
         SetBounds();
         isSpawnBombEnable = player.bombNumber < 5;
     }

@@ -32,6 +32,8 @@ public class VirusMovementController : MonoBehaviour
 
     private void Update()
     {
+        if(!GameManager.Instance.IsGameStarted) return;
+        
         if (isEnable)
         {
             timer += Time.deltaTime;

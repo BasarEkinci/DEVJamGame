@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     
     public bool IsGameStarted { get; set; }
+    public bool IsGameOver { get; set; }
     private void Awake()
     {
         if (Instance == null)
@@ -14,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        IsGameOver = false;
         IsGameStarted = false;
     }
 

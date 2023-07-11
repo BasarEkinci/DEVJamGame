@@ -4,7 +4,7 @@ public class Grenade : MonoBehaviour
 {
     [SerializeField] ParticleSystem explosionEffect;
 
-    private float explosionRadius = 5f;
+    private float explosionRadius = 15f;
     private float explosionForce = 200f;
     private float delay = 3f;
     
