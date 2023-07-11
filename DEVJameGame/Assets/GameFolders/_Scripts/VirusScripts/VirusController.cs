@@ -11,6 +11,7 @@ public class VirusController : MonoBehaviour
         if(health <= 0f)
         {
             Instantiate(explosionEffect, transform.position, transform.rotation);
+            GameManager.Instance.Score += 10;
             HealthManager.Instance.IncreaseHealth(10f);
             Destroy(gameObject);
         }

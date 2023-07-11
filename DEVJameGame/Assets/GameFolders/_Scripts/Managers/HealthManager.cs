@@ -33,7 +33,12 @@ public class HealthManager : MonoBehaviour
     {
         healthSlider.value = currentHealth;
         SetImage();
-        Debug.Log(currentHealth);
+
+        if (currentHealth <= 0)
+        {
+            GameManager.Instance.IsGameOver = true;
+            GameManager.Instance.IsGameStarted = false;
+        }
     }
 
     private void SetImage()
