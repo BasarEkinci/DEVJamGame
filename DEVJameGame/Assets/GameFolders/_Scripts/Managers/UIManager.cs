@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using DG.Tweening;
 using TMPro;
@@ -16,6 +15,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject startPanel;
     [SerializeField] GameObject gamePanel;
     [SerializeField] GameObject gameOverPanel;
+    [SerializeField] GameObject spawnManager;
     [SerializeField] VolumeProfile globalVOlume;
     [SerializeField] Vector3 playPos;
     [SerializeField] TMP_Text scoreText;
@@ -23,6 +23,9 @@ public class UIManager : MonoBehaviour
     
     private void Start()
     {
+        if(spawnManager.activeSelf)
+            spawnManager.SetActive(false);
+        
         if(!startPanel.activeSelf)
             startPanel.SetActive(true);
         
@@ -43,7 +46,10 @@ public class UIManager : MonoBehaviour
         scoreText.text = "Score: " + GameManager.Instance.Score.ToString("0");
         
         if(GameManager.Instance.IsGameOver)
+        {
             gameOverPanel.SetActive(true);
+            spawnManager.SetActive(false);
+        }
     }
 
     public void PlayButton()
@@ -77,6 +83,7 @@ public class UIManager : MonoBehaviour
         mainCamera.transform.DORotate(Vector3.right*65f, 1f);
         startPanel.SetActive(false);
         gamePanel.SetActive(true);
+        spawnManager.SetActive(true);
         GameManager.Instance.IsGameStarted = true;
     }
 }

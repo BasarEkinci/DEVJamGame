@@ -20,6 +20,7 @@ public class VirusMovementController : MonoBehaviour
     
     void OnEnable () 
     {
+        if(!GameManager.Instance.IsGameStarted) return;
         timer += Time.deltaTime;
         if (timer >= wanderTimer)
         {

@@ -11,7 +11,7 @@ public class SpawnManager : MonoBehaviour
     private IEnumerator coroutine;
     private bool isSpawnBombEnable;
     
-    private void Start()
+    private void OnEnable()
     {
         coroutine = SpawnVirus(4f);
         StartCoroutine(coroutine);
@@ -22,7 +22,7 @@ public class SpawnManager : MonoBehaviour
     {
         SetBounds();
         isSpawnBombEnable = player.bombNumber < 5;
-        Debug.Log(GameManager.Instance.IsGameStarted);
+          
     }
 
     private void SetBounds()
@@ -34,7 +34,7 @@ public class SpawnManager : MonoBehaviour
     
     private IEnumerator SpawnVirus(float spawnRate)
     {
-        while (GameManager.Instance.IsGameStarted)
+        while (true)
         {
             int virusIndex = Random.Range(0, 4);
             Instantiate(virusList[virusIndex], spawnPos, transform.rotation);    
