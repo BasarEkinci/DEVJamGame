@@ -23,6 +23,7 @@ public class Grenade : MonoBehaviour
         {
             Explode();
             hasExploded = true;
+            SoundManager.Instance.PlaySoundEffect(1);
             Destroy(gameObject);
         }
     }

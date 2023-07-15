@@ -18,8 +18,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject spawnManager;
     [SerializeField] VolumeProfile globalVOlume;
     [SerializeField] Vector3 playPos;
-    [SerializeField] TMP_Text scoreText;
-    [SerializeField] TMP_Text highScoreText;
+
     
     private void Start()
     {
@@ -42,12 +41,11 @@ public class UIManager : MonoBehaviour
     
     private void Update()
     {
-        highScoreText.text = "High Score: " + GameManager.Instance.HighScore;
-        scoreText.text = "Score: " + GameManager.Instance.Score.ToString("0");
-        
         if(GameManager.Instance.IsGameOver)
         {
             gameOverPanel.SetActive(true);
+            SoundManager.Instance.StopSound(6);
+            SoundManager.Instance.PlaySoundEffect(5);
             spawnManager.SetActive(false);
         }
     }
@@ -57,6 +55,8 @@ public class UIManager : MonoBehaviour
         playButton.transform.DOMove(new Vector3(-550f, -15, 0), 1f);
         infoButton.transform.DOMove(new Vector3(-550f, -15f, 0), 1f);
         startText.DOScale(Vector3.zero, 1f);
+        SoundManager.Instance.StopSound(7);
+        SoundManager.Instance.PlaySound(6);
         StartCoroutine(StartGameActions());
     }
 

@@ -11,7 +11,8 @@ public class VirusController : MonoBehaviour
         if(health <= 0f)
         {
             Instantiate(explosionEffect, transform.position, transform.rotation);
-            GameManager.Instance.Score += 10;
+            SoundManager.Instance.PlaySoundEffect(2);
+            //GameManager.Instance.Score += 10;
             HealthManager.Instance.IncreaseHealth(10f);
             Destroy(gameObject);
         }
@@ -21,7 +22,7 @@ public class VirusController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("GameArea"))
         {
-            HealthManager.Instance.TakeDamage(0.04f);
+            HealthManager.Instance.TakeDamage(0.09f);
         }
     }
 

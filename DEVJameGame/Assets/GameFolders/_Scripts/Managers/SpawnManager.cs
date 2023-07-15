@@ -22,7 +22,6 @@ public class SpawnManager : MonoBehaviour
     {
         SetBounds();
         isSpawnBombEnable = player.bombNumber < 5;
-          
     }
 
     private void SetBounds()

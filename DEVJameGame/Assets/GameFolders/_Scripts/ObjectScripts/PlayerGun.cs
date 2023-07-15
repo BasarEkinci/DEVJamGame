@@ -12,6 +12,7 @@ public class PlayerGun : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Instantiate(bullet, spawnTransform.position, transform.rotation);
+            SoundManager.Instance.PlaySoundEffect(0);
         }       
     }
 }
