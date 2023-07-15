@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class VirusController : MonoBehaviour
@@ -8,11 +7,11 @@ public class VirusController : MonoBehaviour
 
     private void Update()
     {
-        if(health <= 0f)
+        if(health <= 0f && !GameManager.Instance.IsGameOver)
         {
             Instantiate(explosionEffect, transform.position, transform.rotation);
             SoundManager.Instance.PlaySoundEffect(2);
-            //GameManager.Instance.Score += 10;
+            GameManager.Instance.Score += 10;
             HealthManager.Instance.IncreaseHealth(10f);
             Destroy(gameObject);
         }
@@ -22,7 +21,7 @@ public class VirusController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("GameArea"))
         {
-            HealthManager.Instance.TakeDamage(0.09f);
+            HealthManager.Instance.TakeDamage(0.05f);
         }
     }
 

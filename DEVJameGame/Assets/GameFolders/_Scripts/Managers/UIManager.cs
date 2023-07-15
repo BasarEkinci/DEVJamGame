@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject gameOverPanel;
     [SerializeField] GameObject spawnManager;
     [SerializeField] VolumeProfile globalVOlume;
+    [SerializeField] TMP_Text scoreText;
     [SerializeField] Vector3 playPos;
 
     
@@ -44,6 +45,7 @@ public class UIManager : MonoBehaviour
         if(GameManager.Instance.IsGameOver)
         {
             gameOverPanel.SetActive(true);
+            scoreText.text = "Score\n" + GameManager.Instance.Score;
             SoundManager.Instance.StopSound(6);
             SoundManager.Instance.PlaySoundEffect(5);
             spawnManager.SetActive(false);

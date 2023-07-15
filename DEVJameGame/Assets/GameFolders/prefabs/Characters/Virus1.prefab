@@ -118,7 +118,7 @@ Transform:
   m_Children:
   - {fileID: 5084955137805225343}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1819708995492035048
 BoxCollider:
@@ -215,6 +215,6 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: 0.51
   m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
