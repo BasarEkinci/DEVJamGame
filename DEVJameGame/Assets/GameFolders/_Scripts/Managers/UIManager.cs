@@ -46,8 +46,6 @@ public class UIManager : MonoBehaviour
         {
             gameOverPanel.SetActive(true);
             scoreText.text = "Score\n" + GameManager.Instance.Score;
-            SoundManager.Instance.StopSound(6);
-            SoundManager.Instance.PlaySoundEffect(5);
             spawnManager.SetActive(false);
         }
     }

@@ -22,6 +22,5 @@ public class GameManager : MonoBehaviour
     {
         IsGameOver = false;
         IsGameStarted = false;
-        SoundManager.Instance.PlaySound(7);
     }
 }
